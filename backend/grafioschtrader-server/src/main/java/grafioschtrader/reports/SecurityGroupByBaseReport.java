@@ -43,11 +43,16 @@ public class SecurityGroupByBaseReport<T> extends SecurityPositionSummaryReport 
 
     for (final SecurityPositionSummary securityPositionSummary : securityPositionSummaryList) {
       Security security = securityPositionSummary.getSecurity();
+      System.out.println("fix bug");
+      double currencyExchangeRate=0.0;
 
-      double currencyExchangeRate = (security.getCurrency().equals(dateCurrencyMap.getMainCurrency())) ? 1.0
-          : dateCurrencyMap.isUntilDateEqualNowOrAfter()
-              ? dateCurrencyMap.getCurrencypairByFromCurrency(security.getCurrency()).getSLast()
-              : dateCurrencyMap.getExactDateAndFromCurrency(dateCurrencyMap.getUntilDate(), security.getCurrency());
+      if (dateCurrencyMap.getCurrencypairByFromCurrency(security.getCurrency()) != null) {
+         currencyExchangeRate = (security.getCurrency().equals(dateCurrencyMap.getMainCurrency())) ? 1.0
+                : dateCurrencyMap.isUntilDateEqualNowOrAfter()
+                ? dateCurrencyMap.getCurrencypairByFromCurrency(security.getCurrency()).getSLast()
+                : dateCurrencyMap.getExactDateAndFromCurrency(dateCurrencyMap.getUntilDate(), security.getCurrency());
+      }
+
 
       T groupValue = getGroupValue(security);
       SecurityPositionDynamicGroupSummary<T> securityPositionDynamicGroupSummary = groupMap.computeIfAbsent(groupValue,
