@@ -22,13 +22,11 @@ pipeline {
 
     post {
         success {
-            // This block is executed if all stages are successful
-            // You can perform additional actions here if needed
+           echo 'Pipeline success.'
         }
 
         failure {
-            // This block is executed if any stage fails
-            // You can perform cleanup or notification actions here if needed
+            echo 'Pipeline fail.'
         }
     }
 }
