@@ -2,7 +2,7 @@ pipeline {
     agent any // You can specify a specific agent if needed
     tools {
         maven 'mvn'
-        jdk 'jdk17'
+        jdk 'amazoncoretto17'
     }
     stages {
         stage('Checkout') {
