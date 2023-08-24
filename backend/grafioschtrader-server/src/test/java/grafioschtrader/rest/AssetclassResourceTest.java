@@ -62,6 +62,7 @@ class AssetclassResourceTest {
         RestTestHelper.createURLWithPort(RequestMappings.ASSETCLASS_MAP + "/", port), HttpMethod.POST,
         RestTestHelper.getHttpEntity(RestTestHelper.getRadomUser(), a), Assetclass.class);
     assertNotNull(response);
+
     Assetclass aNew = response.getBody();
     assertThat(aNew.getIdAssetClass()).isGreaterThan(0);
     List<ProposeChangeField> pcf = RestTestHelper.getDiffPropertiesOfTwoObjects(a, aNew);
