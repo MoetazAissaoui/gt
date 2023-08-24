@@ -1,6 +1,8 @@
 pipeline {
     agent any // You can specify a specific agent if needed
-
+    tools {
+        maven 'mvn'
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -14,7 +16,7 @@ pipeline {
             steps {
               echo 'Buidling application...'
                 // Use the Maven wrapper to download dependencies and build the project
-                sh './mvnw clean install' // Use mvnw.cmd on Windows
+                sh 'mvn clean install ./backend/pom.xml' // Use mvnw.cmd on Windows
             }
         }
 
