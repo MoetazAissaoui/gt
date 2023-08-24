@@ -5,7 +5,14 @@ pipeline {
         jdk 'jdk17'
     }
     stages {
-
+        stage('Checkout') {
+            steps {
+              echo 'Checkouting branche...'
+                // Checkout the source code from your version control system (e.g., Git)
+                checkout scm
+            }
+        }
+        
         stage('Build Dependencies') {
             steps {
               echo 'Buidling application...'
