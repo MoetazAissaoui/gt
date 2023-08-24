@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-              echo 'Checkouting branche..."
+              echo 'Checkouting branche...'
                 // Checkout the source code from your version control system (e.g., Git)
                 checkout scm
             }
