@@ -16,7 +16,7 @@ pipeline {
             steps {
               echo 'Buidling application...'
                 // Use the Maven wrapper to download dependencies and build the project
-                sh 'mvn clean install ./backend/pom.xml' // Use mvnw.cmd on Windows
+                sh 'mvn clean install .//var/jenkins_home/workspace/asset_management_master/backend/pom.xml' // Use mvnw.cmd on Windows
             }
         }
 
